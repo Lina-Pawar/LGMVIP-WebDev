@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<head>
+    <title>Student Result Management System</title>
+    <link href="index.css" rel="stylesheet">
+</head>
+<body>
+    <img src="https://www.bromcomvle.com/images/DefaultBackground.jpg" style="width:100vw;height:100vh;opacity:0.8">
+    <div id="login">
+        <h2>Choose login type:</h2><br>
+        <select onchange="show()">
+            <option selected>Student</option>
+            <option>Faculty</option>
+        </select><br>
+        <div id="faculty" style="display: none;">
+            <br>
+            <input id="username" placeholder="Username" required>
+            <input id="password" placeholder="Password" required>
+        </div>
+        <br>
+        <button onclick="login()">Login</button>
+    </div>
+    <script>
+        function show(){
+            var x=document.getElementById("faculty");
+            if(x.style.display==="block"){
+                x.style.display="none";
+            }else{
+                x.style.display="block";
+            }            
+        }
+        function login(){
+            if(document.getElementById("faculty").style.display==="block"){
+                if((document.getElementById("username").value==='')||(document.getElementById("password").value==='')){
+                    alert("Enter username and password!");
+                }else if((document.getElementById("username").value!=='rcf@faculty')||(document.getElementById("password").value!=='RCF_1998')){
+                    alert("Wrong username or password!");
+                }else{
+                    location.href = 'http://localhost/task-3/faculty.php';
+                }
+            }else{
+                location.href = 'http://localhost/task-3/students.php';
+            }
+        }
+    </script>
+</body>
